@@ -18,7 +18,7 @@ Including another URLconf
 
 
 from django.urls import path, include
-from myapp.views import SongList, SongDetail, get_songs, get_song, create_song, update_song
+from musicViews import SongList, SongDetail, get_songs, get_song, create_song, update_song
 
 urlpatterns = [
        path('api/music/', SongList.as_view()),
@@ -26,5 +26,5 @@ urlpatterns = [
        path('api/music/all/', get_songs),
        path('api/music/<int:pk>/detail/', get_song),
        path('api/music/create/', create_song),
-       path('api/music/<int:pk>/update/', update_song),  # Add this line
+       path('api/music/<int:pk>/update/', update_song), 
    ]

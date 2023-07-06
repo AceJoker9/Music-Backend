@@ -12,9 +12,12 @@ class Song {
 }
 
 const songsData = [
-  new Song("Song Title 1", "Artist 1", "Album 1", "2021-01-01", "Genre 1"),
-  new Song("Song Title 2", "Artist 2", "Album 2", "2021-02-01", "Genre 2"),
-  new Song("Song Title 3", "Artist 3", "Album 3", "2021-03-01", "Genre 3"),
+  new Song("Billie Jean", "Michael Jackson", "Thriller", "1982", "R&B"),
+  new Song("Purple Rain", "Prince", "Purple Rain", "1984", "R&B"),
+  new Song("Super Freak", "Rick James", "Street Songs", "1981", "R&B"),
+  new Song("I Wanna Dance with Somebody", "Whitney Houston", "1981", "R&B"),
+  new Song("Rock with You", "Michael Jackson", "Off The Wall", "1979", "R&B"),
+  new Song("Sweet Child o' Mine", "Guns N' Roses", "Appetite for Destruction", "1987", "R&B"),
 ];
 
 function SongList() {

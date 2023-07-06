@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from .models import Song
+from django.shortcuts import get_object_or_404
 from songSerializer import SongSerializer
 
 def update_song(request, pk):
@@ -24,10 +25,39 @@ def update_song(request, pk):
        return JsonResponse(serializer.errors, status=400)
 
 
-class SongList(generics.ListAPIView):
-       queryset = Song.objects.all()
-       serializer_class = SongSerializer
+def get_songs(request):
+       songs = Song.objects.all()
+       data = {
+           'songs': list(songs.values())
+       }
+       return JsonResponse(data)
 
-   class SongDetail(generics.RetrieveAPIView):
-       queryset = Song.objects.all()
-       serializer_class = SongSerializer
+def get_song(request, pk):
+       song = get_object_or_404(Song, pk=pk)
+       data = {
+           'song': {
+               'title': song.title,
+               'artist': song.artist,
+               'album': song.album,
+               'release_date': song.release_date,
+               'genre': song.genre
+           }
+       }
+       return JsonResponse(data)
+
+
+def create_song(request):
+       serializer = SongSerializer(data=request.data)
+       if serializer.is_valid():
+           song = serializer.save()
+           data = {
+               'song': {
+                   'title': song.title,
+                   'artist': song.artist,
+                   'album': song.album,
+                   'release_date': song.release_date,
+                   'genre': song.genre
+               }
+           }
+           return JsonResponse(data, status=201)
+       return JsonResponse(serializer.errors, status=400)
