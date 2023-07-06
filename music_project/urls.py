@@ -18,7 +18,8 @@ Including another URLconf
 
 
 from django.urls import path, include
-from musicViews import SongList, SongDetail, get_songs, get_song, create_song, update_song
+from musicViews import get_songs, get_song, create_song, update_song
+from songsData import Song, SongDetail, SongsData, SongList
 
 urlpatterns = [
        path('api/music/', SongList.as_view()),
